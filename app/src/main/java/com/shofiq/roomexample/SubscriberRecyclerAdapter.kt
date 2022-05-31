@@ -18,10 +18,13 @@ class SubscriberRecyclerAdapter(private val clickListener: (Subscriber) -> Unit)
     }
 
     fun setData(newList: List<Subscriber>){
-        val diffUtil = MyDiffUtil(newList, subscribers)
-        val diffResult = DiffUtil.calculateDiff(diffUtil)
-        subscribers = newList as ArrayList<Subscriber>
-       diffResult.dispatchUpdatesTo(this)
+//        val diffUtil = MyDiffUtil(newList, subscribers)
+//        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        subscribers.clear()
+        subscribers.addAll(newList)
+        notifyDataSetChanged()
+//        diffResult.dispatchUpdatesTo(this)
+//        subscribers = newList as ArrayList<Subscriber>
     }
 
     override fun onBindViewHolder(holder: SubscriberViewHolder, position: Int) {
